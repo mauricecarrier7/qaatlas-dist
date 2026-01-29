@@ -1,6 +1,6 @@
 {
   "name": "qaatlas",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "AI-powered test plan generator that analyzes code diffs and produces test plans, risk assessments, and coverage maps",
   "repository": {
     "type": "git",
