@@ -29,7 +29,7 @@ npx qaatlas analyze
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.8/qaatlas-macos
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.7/qaatlas-macos
 chmod +x /usr/local/bin/qaatlas
 xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 ```
@@ -38,7 +38,7 @@ xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.8/qaatlas-linux-x64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.7/qaatlas-linux-x64
 chmod +x /usr/local/bin/qaatlas
 ```
 
@@ -46,7 +46,7 @@ chmod +x /usr/local/bin/qaatlas
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.8/qaatlas-linux-arm64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.7/qaatlas-linux-arm64
 chmod +x /usr/local/bin/qaatlas
 ```
 
@@ -193,13 +193,13 @@ jobs:
   uses: actions/cache@v4
   with:
     path: /usr/local/bin/qaatlas
-    key: qaatlas-1.0.8-Linux-X64
+    key: qaatlas-1.0.7-Linux-X64
 
 - name: Install QAAtlas
   if: steps.cache.outputs.cache-hit != 'true'
   run: |
     curl -L -o /usr/local/bin/qaatlas \
-      https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.8/qaatlas-linux-x64
+      https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.7/qaatlas-linux-x64
     chmod +x /usr/local/bin/qaatlas
 
 - name: Run QAAtlas
@@ -254,7 +254,7 @@ chmod +x /usr/local/bin/qaatlas
 Bust the cache by changing the cache key:
 
 ```yaml
-key: qaatlas-1.0.8-Linux-X64-v2
+key: qaatlas-1.0.7-Linux-X64-v2
 ```
 
 ## License
