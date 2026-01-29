@@ -21,7 +21,7 @@ npm install -g qaatlas
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-macos
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.1.0/qaatlas-macos
 chmod +x /usr/local/bin/qaatlas
 xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 ```
@@ -30,7 +30,7 @@ xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-linux-x64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.1.0/qaatlas-linux-x64
 chmod +x /usr/local/bin/qaatlas
 ```
 
@@ -38,7 +38,7 @@ chmod +x /usr/local/bin/qaatlas
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-linux-arm64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.1.0/qaatlas-linux-arm64
 chmod +x /usr/local/bin/qaatlas
 ```
 
@@ -65,7 +65,7 @@ Download `qaatlas-win-x64.exe` from the [latest release](https://github.com/maur
 
 ```yaml
 - name: Install QAAtlas
-  run: npm install -g qaatlas@1.0.0
+  run: npm install -g qaatlas@1.1.0
 
 - name: Run Analysis
   env:
