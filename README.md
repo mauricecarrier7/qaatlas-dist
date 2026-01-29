@@ -1,8 +1,15 @@
-# QAAtlas Distribution
+# QAAtlas
 
-Pre-built binaries and easy installation for [QAAtlas](https://github.com/mauricecarrier7/qaatlas) - the AI-powered test plan generator.
+AI-powered test plan generator that analyzes code diffs and produces comprehensive test plans, risk assessments, and coverage maps.
 
-## Quick Install
+## Features
+
+- **Test Plan Generation**: Automatically generates detailed test plans from code changes
+- **Risk Assessment**: Identifies high-risk areas in your code changes
+- **Coverage Mapping**: Maps test coverage to changed code sections
+- **Multi-format Output**: Generates Markdown reports, JSON data, and PR comments
+
+## Installation
 
 ### npm (Recommended)
 
@@ -10,14 +17,12 @@ Pre-built binaries and easy installation for [QAAtlas](https://github.com/mauric
 npm install -g qaatlas
 ```
 
-### macOS (Universal Binary)
+### macOS (Universal Binary - Intel & Apple Silicon)
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas/releases/latest/download/qaatlas-macos
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-macos
 chmod +x /usr/local/bin/qaatlas
-
-# Remove quarantine if needed
 xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 ```
 
@@ -25,7 +30,7 @@ xattr -d com.apple.quarantine /usr/local/bin/qaatlas 2>/dev/null || true
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas/releases/latest/download/qaatlas-linux-x64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-linux-x64
 chmod +x /usr/local/bin/qaatlas
 ```
 
@@ -33,19 +38,13 @@ chmod +x /usr/local/bin/qaatlas
 
 ```bash
 curl -L -o /usr/local/bin/qaatlas \
-  https://github.com/mauricecarrier7/qaatlas/releases/latest/download/qaatlas-linux-arm64
+  https://github.com/mauricecarrier7/qaatlas-dist/releases/download/v1.0.0/qaatlas-linux-arm64
 chmod +x /usr/local/bin/qaatlas
 ```
 
-### Windows
+### Windows x64
 
-Download `qaatlas-win-x64.exe` from the [latest release](https://github.com/mauricecarrier7/qaatlas/releases/latest) and add to your PATH.
-
-## Verify Installation
-
-```bash
-qaatlas --version
-```
+Download `qaatlas-win-x64.exe` from the [latest release](https://github.com/mauricecarrier7/qaatlas-dist/releases/latest) and add to your PATH.
 
 ## Quick Start
 
@@ -56,10 +55,7 @@ qaatlas --version
 
 2. Analyze your code changes:
    ```bash
-   # From a git repository
    qaatlas analyze
-
-   # Or with a diff file
    qaatlas analyze --diff changes.patch
    ```
 
@@ -67,41 +63,17 @@ qaatlas --version
 
 ## CI/CD Integration
 
-### GitHub Actions
-
 ```yaml
 - name: Install QAAtlas
   run: npm install -g qaatlas@1.0.0
 
 - name: Run Analysis
   env:
-    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    ANTHROPIC_API_KEY: 
   run: |
-    git diff origin/${{ github.base_ref }}...HEAD > diff.patch
+    git diff origin/...HEAD > diff.patch
     qaatlas analyze --diff diff.patch
 ```
-
-### With Caching
-
-```yaml
-- name: Cache QAAtlas
-  id: cache
-  uses: actions/cache@v4
-  with:
-    path: /usr/local/bin/qaatlas
-    key: qaatlas-1.0.0-${{ runner.os }}-${{ runner.arch }}
-
-- name: Install QAAtlas
-  if: steps.cache.outputs.cache-hit != 'true'
-  run: |
-    curl -L -o /usr/local/bin/qaatlas \
-      https://github.com/mauricecarrier7/qaatlas/releases/download/v1.0.0/qaatlas-${{ runner.os == 'macOS' && 'macos' || 'linux-x64' }}
-    chmod +x /usr/local/bin/qaatlas
-```
-
-## Documentation
-
-For full documentation, configuration options, and API reference, see the [main repository](https://github.com/mauricecarrier7/qaatlas).
 
 ## License
 
